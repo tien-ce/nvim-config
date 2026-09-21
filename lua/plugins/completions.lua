@@ -28,11 +28,11 @@ local nvim_cmp = {
       mapping = cmp.mapping.preset.insert({
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        --["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item.
-        ["<Tab>"] = cmp.mapping.select_next_item(), -- Navigate to the next item
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(), -- Navigate to the previous item
+        --["<C-Space>"] = cmp.mapping.complete(), -- open completion, C-n already is bultin in neovim
+        ["<C-e>"] = cmp.mapping.abort(), -- Abort the completion
+        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<Tab>"] = cmp.mapping.select_next_item(), -- Select next item in completion popup, or fallback to indent
+        ["<S-Tab>"] = cmp.mapping.select_prev_item(), -- Select previous item in completion popup, or fallback
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },

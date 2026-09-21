@@ -3,8 +3,9 @@ vim.cmd("set tabstop=2") -- How nvim deal with when meet \t (draw 2 spaces)
 vim.cmd("set softtabstop=2") -- When use tab, each tab = 2 spaces, bacspace = remove 2 sapces
 vim.cmd("set shiftwidth=2") -- Indent (>>, <<) or automatically indent of nvim
 -- Use Ctrl + space to go to normal mode from insert mode
-vim.keymap.set("i", "<C-Space>", "<Esc>", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-@>", "<Esc>", { noremap = true, silent = true })
+local modes = { "n", "i", "v", "x", "s", "o", "c" }
+vim.keymap.set(modes, "<C-Space>", "<Esc>", { noremap = true, silent = true })
+vim.keymap.set(modes, "<C-@>", "<Esc>", { noremap = true, silent = true })
 -- Navigation & actions in insert mode
 vim.keymap.set("i", "<C-v>", "<C-o>l", { desc = "Move right in insert mode" })
 vim.keymap.set("i", "<C-j>", "<C-o>j", { desc = "Move down in insert mode" })
