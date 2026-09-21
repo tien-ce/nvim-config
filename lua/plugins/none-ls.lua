@@ -29,7 +29,7 @@ local none_ls = {
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.black,
-        null_ls.builtins.diagnostics.cppcheck, -- Needs to be manually downloaded via OS package manager rather than mason
+        --null_ls.builtins.diagnostics.cppcheck, -- Needs to be manually downloaded via OS package manager rather than mason
         -- null_ls.builtins.diagnostics.ruff: null-ls no longer supports ruff (use LSP instead)
       },
     })

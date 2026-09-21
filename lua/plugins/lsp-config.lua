@@ -25,13 +25,18 @@ local lua_opts = {
 		},
 	},
 }
+
+--Clangd option, adding query with platformio project 
+local clangd_cmd = { "clangd", "--background-index", "--function-arg-placeholders=0" }
+local pio_file = vim.fs.find("platformio.ini", { upward = true, limit = 1 })
+if #pio_file > 0 then
+  local home = vim.env.HOME or "~"
+  table.insert(clangd_cmd, "--query-driver=" .. home .. "/.platformio/packages/**/bin/*g++*")
+end
 local clangd_opts = {
-  cmd = {
-    "clangd",
-    "--background-index",
-    "--function-arg-placeholders=0", -- Disable auto-inserting argument placeholders into function calls
-  },
+  cmd = clangd_cmd,
 }
+
 local nvim_lsp_config = {
 	"neovim/nvim-lspconfig",
 	dependencies = {
