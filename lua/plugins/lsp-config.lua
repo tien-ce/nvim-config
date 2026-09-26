@@ -27,11 +27,11 @@ local lua_opts = {
 }
 
 --Clangd option, adding query with platformio project 
-local clangd_cmd = { "clangd", "--background-index", "--function-arg-placeholders=0" }
+local clangd_cmd = { "clangd", "--background-index", "--function-arg-placeholders=0", "--log=verbose" }
 local pio_file = vim.fs.find("platformio.ini", { upward = true, limit = 1 })
 if #pio_file > 0 then
   local home = vim.env.HOME or "~"
-  table.insert(clangd_cmd, "--query-driver=" .. home .. "/.platformio/packages/**/bin/*g++*")
+  table.insert(clangd_cmd, "--query-driver=/home/it-tien/.platformio/packages/toolchain-xtensa-esp-elf/bin/*")
 end
 local clangd_opts = {
   cmd = clangd_cmd,
@@ -108,7 +108,7 @@ local lsp_signature = {
 		bind = true,
 		floating_window = true, -- Enable mini floating window
 		doc_lines = 0, -- Show only 1-line signature, disable verbose doc comments
-		floating_window_above_cur_line = false, -- Prioritize displaying below the current line
+		floating_window_above_cur_line = true, -- Prioritize displaying above the current line
 		hint_enable = true, -- Keep penguin icon inline
 		hint_prefix = "🐧 ",
 		hint_inline = function()

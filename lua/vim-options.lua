@@ -14,8 +14,8 @@ vim.keymap.set("i", "<C-p>", "<C-o>O", { desc = "New line above in insert mode" 
 vim.keymap.set("i", "<C-u>", "<C-o>u", { desc = "Undo in insert mode" })
 vim.keymap.set("i", "<C-z>", "<C-o><C-r>", { desc = "Redo in insert mode" })
 
--- Automatically execute the selected register across the entire visual selection
--- @q in visual mode --> :'<,'>norm @q<CR>.
-vim.keymap.set("x", "@", function()
-  return ":norm @" .. vim.fn.getcharstr() .. "<CR>"
-end, { expr = true, silent = true })
+vim.opt.number = true -- show current line
+vim.opt.relativenumber = true -- show relative line
+-- Link default register (") to system clipboard (+)
+vim.opt.clipboard = "unnamedplus"
+vim.o.exrc = true
